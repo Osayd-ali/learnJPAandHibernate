@@ -8,6 +8,9 @@ public class CourseJdbcRepository {
     private JdbcTemplate springJdbcTemplate;
     // JdbcTemplate is used to interact with a relational database in Spring applications,
     // providing methods to execute SQL queries, updates, and manage database connections.
+    public CourseJdbcRepository(JdbcTemplate springJdbcTemplate) {
+        this.springJdbcTemplate = springJdbcTemplate;
+    }
     private static String INSERT_QUERY =
             """
               insert into course (id, name, author)
