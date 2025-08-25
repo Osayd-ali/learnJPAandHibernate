@@ -1,5 +1,6 @@
 package com.in28minutes.springboot.learn_jpa_and_hibernate.course.jdbc;
 
+import com.in28minutes.springboot.learn_jpa_and_hibernate.course.Course;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -14,10 +15,13 @@ public class CourseJdbcRepository {
     private static String INSERT_QUERY =
             """
               insert into course (id, name, author)
-              values (1, 'Introduction to SQL', 'John Doe');
+              values (?, ?, ?);
              
             """;
-    public void insert(){ // Method to insert a course into the database.
-        springJdbcTemplate.update(INSERT_QUERY);
+    public void insert(Course course){ // Method to insert a course into the database.
+        springJdbcTemplate.update(INSERT_QUERY,
+                course.getId(),
+                course.getName(),
+                course.getAuthor());
     }
 }
