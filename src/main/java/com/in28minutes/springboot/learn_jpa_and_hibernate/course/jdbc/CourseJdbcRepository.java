@@ -30,8 +30,7 @@ public class CourseJdbcRepository {
                 course.getName(),
                 course.getAuthor());
     }
-    public void delete(Course course){ // Method to delete a course from the database.
-        springJdbcTemplate.update(DELETE_QUERY,
-                course.getId());
+    public void delete(long id){ // Method to delete a course from the database.
+        springJdbcTemplate.update(DELETE_QUERY, id);
     }
 }
