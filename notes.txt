@@ -1,0 +1,6 @@
+insert into course (id, name, author)
+values (1, 'Introduction to SQL', 'John Doe');
+
+select * from course;
+
+delete from course where id = 1;
