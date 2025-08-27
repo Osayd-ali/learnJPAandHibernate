@@ -1,8 +1,17 @@
 package com.in28minutes.springboot.learn_jpa_and_hibernate.course;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
+//Creating a mapping between the class and the database table.
 public class Course {
+    @Id // To specify the primary key of the entity.
     private long id;
+    @Column(name="name") // To specify the column name in the database table.
     private String name;
+    @Column(name="author") // To specify the column name in the database table.
     private String author;
 
     public Course() {
