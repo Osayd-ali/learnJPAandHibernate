@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity
-//Creating a mapping between the class and the database table.
+//Creating a mapping between the class and the database table. (JPA uses this annotation to know that this class is an entity, and it needs to be mapped to a table in the database.)
 public class Course {
     @Id // To specify the primary key of the entity.
     private long id;
