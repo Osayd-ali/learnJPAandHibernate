@@ -1,19 +1,23 @@
-package com.in28minutes.springboot.learn_jpa_and_hibernate.course.jdbc;
+package com.in28minutes.springboot.learn_jpa_and_hibernate.course;
 
-import com.in28minutes.springboot.learn_jpa_and_hibernate.course.Course;
+import com.in28minutes.springboot.learn_jpa_and_hibernate.course.jdbc.CourseJdbcRepository;
+import com.in28minutes.springboot.learn_jpa_and_hibernate.course.jpa.CourseJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CourseJdbcCommandLineRunner implements CommandLineRunner {
+public class CourseCommandLineRunner implements CommandLineRunner {
     // CommandLineRunner is a functional interface in Spring Boot that indicates a bean should run when it is contained within a SpringApplication.
     // It is typically used to execute some code after the application has started and the Spring context
     // has been initialized. This is often useful for tasks such as initializing data, performing setup operations, or running any custom logic at startup.
     // The run method is called with command-line arguments passed to the application.
     // Now we are autowiring the CourseJdbcRepository to use it in the run method.
+    //@Autowired
+    //private CourseJdbcRepository repository;
+
     @Autowired
-    private CourseJdbcRepository repository;
+    private CourseJpaRepository repository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -21,7 +25,7 @@ public class CourseJdbcCommandLineRunner implements CommandLineRunner {
         repository.insert(new Course(2, "Learn Azure Now!", "in28minutes"));
         repository.insert(new Course(3, "Learn DevOps Now!", "in28minutes"));
         repository.insert(new Course(4, "Learn Amazon Now!", "in28minutes"));
-        repository.delete(2);
+        repository.deleteById(2);
         System.out.println(repository.findById(1));
         System.out.println(repository.findById(3));
 
