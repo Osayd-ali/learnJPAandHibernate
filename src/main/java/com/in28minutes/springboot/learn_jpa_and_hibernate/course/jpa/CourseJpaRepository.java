@@ -3,15 +3,18 @@ package com.in28minutes.springboot.learn_jpa_and_hibernate.course.jpa;
 import com.in28minutes.springboot.learn_jpa_and_hibernate.course.Course;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository // To tell Spring that this is a repository class and it talks to the database.
+@Transactional // To manage transactions automatically. (Begin, Commit, Rollback)
+// Transactional annotation is used to manage transactions in a declarative way.
 public class CourseJpaRepository {
-        //We will use EntityManager to manage our entity which is Course.
-        //EntityManager is the primary JPA interface used to interact with the persistence context.
-        //It provides methods for performing CRUD (Create, Read, Update, Delete) operations on
-        // entities, managing transactions, and executing queries.
+    //We will use EntityManager to manage our entity which is Course.
+    //EntityManager is the primary JPA interface used to interact with the persistence context.
+    //It provides methods for performing CRUD (Create, Read, Update, Delete) operations on
+    // entities, managing transactions, and executing queries.
     @PersistenceContext
     private EntityManager entityManager;
 
